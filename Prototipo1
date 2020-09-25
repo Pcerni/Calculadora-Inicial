@@ -1,0 +1,66 @@
+/*Creado por Pamela el 03-04-2020
+Mejorable en todos los casos*/
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Calculadora extends JFrame implements ActionListener{
+ private JLabel labelSuma, labelResta, labelMulti, labelDiv;
+ private JTextField campo1, campo2;
+ private JButton boton;
+
+ public Calculadora(){
+  setLayout(null);
+  labelSuma = new JLabel("Resultado Suma:");
+  labelSuma.setBounds(10,120,200,30);
+  add(labelSuma);
+
+  labelResta = new JLabel("Resultado Resta:");
+  labelResta.setBounds(10,150,200,30);
+  add(labelResta);
+
+  labelMulti = new JLabel("Resultado Multiplicacion:");
+  labelMulti.setBounds(10,180,200,30);
+  add(labelMulti);
+
+  labelDiv = new JLabel("Resultado Division:");
+  labelDiv.setBounds(10,210,200,30);
+  add(labelDiv);
+
+  campo1 = new JTextField();
+  campo1.setBounds(10,20,50,20);
+  add(campo1);
+
+  campo2 = new JTextField();
+  campo2.setBounds(10,80,50,20);
+  add(campo2);
+
+  boton = new JButton("Operar");
+  boton.setBounds(200,50,80,30);
+  add(boton);
+  boton.addActionListener(this);
+ }
+
+ public void actionPerformed(ActionEvent captura){
+  if(captura.getSource() == boton){
+   int valor1 = 0, valor2 = 0, totalS = 0, totalR = 0, totalM = 0, totalD = 0;
+   valor1 = Integer.parseInt(campo1.getText());
+   valor2 = Integer.parseInt(campo2.getText());
+   totalS = valor1 + valor2;
+   totalR = valor1 - valor2;
+   totalM = valor1 * valor2;
+   totalD = valor1 / valor2;
+   labelSuma.setText("Resultado Suma: " + totalS);
+   labelResta.setText("Resultado Resta: " + totalR);
+   labelMulti.setText("Resultado Multiplicacion: " + totalM);
+   labelDiv.setText("Resultado Division: " + totalD); 
+  }
+ }
+
+ public static void main(String args[]){
+  Calculadora cuadro = new Calculadora();
+  cuadro.setBounds(0,0,350,350);
+  cuadro.setVisible(true);
+  cuadro.setResizable(false);
+  cuadro.setLocationRelativeTo(null); 
+ }
+}
